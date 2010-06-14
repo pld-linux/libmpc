@@ -1,15 +1,15 @@
 Summary:	Complex floating-point library with high precision and exact rounding
 Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotną precyzją i poprawnym zaokrąglaniem
 Name:		libmpc
-Version:	0.8.1
-Release:	2
+Version:	0.8.2
+Release:	1
 License:	LGPL 2.1+
 Group:		Libraries
 Source0:	http://multiprecision.org/mpc/download/mpc-%{version}.tar.gz
-# Source0-md5:	5b34aa804d514cc295414a963aedb6bf
+# Source0-md5:	e98267ebd5648a39f881d66797122fb6
 URL:		http://multiprecision.org/
-BuildRequires:	gmp-devel
-BuildRequires:	mpfr-devel
+BuildRequires:	gmp-devel >= 4.2
+BuildRequires:	mpfr-devel >= 2.3.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,6 +27,8 @@ Summary:	Header files for MPC library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki MPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	gmp-devel >= 4.2
+Requires:	mpfr-devel >= 2.3.1
 
 %description devel
 Header files for MPC library.
@@ -73,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libmpc.so
+%attr(755,root,root) %{_libdir}/libmpc.so
 %{_libdir}/libmpc.la
 %{_includedir}/mpc.h
 %{_infodir}/mpc.info*
