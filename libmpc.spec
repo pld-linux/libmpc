@@ -3,13 +3,13 @@ Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotn�
 Name:		libmpc
 Version:	1.0
 Release:	1
-License:	LGPL 2.1+
+License:	LGPL v3+
 Group:		Libraries
 Source0:	http://multiprecision.org/mpc/download/mpc-%{version}.tar.gz
 # Source0-md5:	13370ceb2e266c5eeb2f7e78c24b7858
 URL:		http://multiprecision.org/
-BuildRequires:	gmp-devel >= 4.2
-BuildRequires:	mpfr-devel >= 2.3.1
+BuildRequires:	gmp-devel >= 4.3.2
+BuildRequires:	mpfr-devel >= 2.4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,8 +27,8 @@ Summary:	Header files for MPC library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki MPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gmp-devel >= 4.2
-Requires:	mpfr-devel >= 2.3.1
+Requires:	gmp-devel >= 4.3.2
+Requires:	mpfr-devel >= 2.4.2
 
 %description devel
 Header files for MPC library.
