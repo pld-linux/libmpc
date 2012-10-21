@@ -2,7 +2,7 @@ Summary:	Complex floating-point library with high precision and exact rounding
 Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotną precyzją i poprawnym zaokrąglaniem
 Name:		libmpc
 Version:	1.0.1
-Release:	2
+Release:	3
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: http://www.multiprecision.org/index.php?prog=mpc&page=download
