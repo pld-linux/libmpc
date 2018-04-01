@@ -1,0 +1,11 @@
+--- mpc-1.1.0/doc/mpc.texi.orig	2018-01-11 11:47:20.000000000 +0100
++++ mpc-1.1.0/doc/mpc.texi	2018-04-01 20:46:29.035960395 +0200
+@@ -33,7 +33,7 @@
+ \global\baselineskip=13pt
+ @end tex
+ 
+-@dircategory GNU Packages
++@dircategory Libraries:
+ @direntry
+ * mpc: (mpc)Multiple Precision Complex Library.
+ @end direntry

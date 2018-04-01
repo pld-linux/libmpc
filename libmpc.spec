@@ -1,16 +1,20 @@
 Summary:	Complex floating-point library with high precision and exact rounding
 Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotną precyzją i poprawnym zaokrąglaniem
 Name:		libmpc
-Version:	1.0.3
-Release:	2
+Version:	1.1.0
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
-#Source0Download: http://www.multiprecision.org/index.php?prog=mpc&page=download
-Source0:	http://multiprecision.org/mpc/download/mpc-%{version}.tar.gz
-# Source0-md5:	d6a1d5f8ddea3abd2cc3e98f58352d26
+#Source0Download: http://www.multiprecision.org/mpc/download.html
+Source0:	http://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
+# Source0-md5:	4125404e41e482ec68282a2e687f6c73
+Patch0:		%{name}-info.patch
 URL:		http://multiprecision.org/
-BuildRequires:	gmp-devel >= 4.3.2
-BuildRequires:	mpfr-devel >= 2.4.2
+BuildRequires:	gmp-devel >= 5.0.0
+BuildRequires:	mpfr-devel >= 3.0.0
+BuildRequires:	texinfo
+Requires:	gmp >= 5.0.0
+Requires:	mpfr >= 3.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,8 +32,8 @@ Summary:	Header files for MPC library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki MPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gmp-devel >= 4.3.2
-Requires:	mpfr-devel >= 2.4.2
+Requires:	gmp-devel >= 5.0.0
+Requires:	mpfr-devel >= 3.0.0
 
 %description devel
 Header files for MPC library.
@@ -51,6 +55,7 @@ Statyczna biblioteka MPC.
 
 %prep
 %setup -q -n mpc-%{version}
+%patch0 -p1
 
 %build
 %configure
