@@ -55,7 +55,7 @@ Statyczna biblioteka MPC.
 
 %prep
 %setup -q -n mpc-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %configure
