@@ -1,18 +1,20 @@
 Summary:	Complex floating-point library with high precision and exact rounding
 Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotną precyzją i poprawnym zaokrąglaniem
 Name:		libmpc
-Version:	1.3.1
+Version:	1.4.1
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://www.multiprecision.org/mpc/download.html
-Source0:	https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
-# Source0-md5:	5c9bc658c9fd0f940e8e3e0f09530c62
+Source0:	https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.xz
+# Source0-md5:	40c5fba305125279ea46041160e81daf
 Patch0:		%{name}-info.patch
 URL:		https://www.multiprecision.org/mpc/
 BuildRequires:	gmp-devel >= 5.0.0
 BuildRequires:	mpfr-devel >= 4.1.0
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
+BuildRequires:	xz
 Requires:	gmp >= 5.0.0
 Requires:	mpfr >= 4.1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libmpc.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -82,14 +87,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README TODO
-%attr(755,root,root) %{_libdir}/libmpc.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmpc.so.3
+%{_libdir}/libmpc.so.*.*.*
+%ghost %{_libdir}/libmpc.so.3
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmpc.so
-%{_libdir}/libmpc.la
+%{_libdir}/libmpc.so
 %{_includedir}/mpc.h
+%{_pkgconfigdir}/mpc.pc
 %{_infodir}/mpc.info*
 
 %files static
