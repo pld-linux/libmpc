@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+
 Summary:	Complex floating-point library with high precision and exact rounding
 Summary(pl.UTF-8):	Biblioteka do obliczeń na liczbach zespolonych z wielokrotną precyzją i poprawnym zaokrąglaniem
 Name:		libmpc
@@ -12,6 +16,7 @@ Patch0:		%{name}-info.patch
 URL:		https://www.multiprecision.org/mpc/
 BuildRequires:	gmp-devel >= 5.0.0
 BuildRequires:	mpfr-devel >= 4.1.0
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	texinfo
 BuildRequires:	xz
@@ -60,7 +65,8 @@ Statyczna biblioteka MPC.
 %patch -P0 -p1
 
 %build
-%configure
+%configure \
+	%{__enable_disable static_libs static}
 %{__make}
 
 %install
@@ -97,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/mpc.pc
 %{_infodir}/mpc.info*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libmpc.a
+%endif
